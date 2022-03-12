@@ -18,8 +18,17 @@ df = df1.drop(['url'],axis=1).copy()
 x = df.drop('label',axis=1)
 y = df['label']
 
+
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.20,random_state=1)
+
+print(x_train.shape)
+print(x_test.shape)
+print(y_train.shape)
+print(y_test.shape)
+
+x_train=x_train.values.reshape(x_train.shape[0],x_train.shape[1],1)
+x_test = x_test.values.reshape(x_test.shape[0],x_test.shape[1],1)
 
 #creating model
 model = Sequential()
